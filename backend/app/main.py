@@ -30,8 +30,8 @@ app = FastAPI(
     title="SISCONT - Sistema Contable",
     version="0.1.0",
     description="Sistema de gestión contable profesional para empresas peruanas",
-    docs_url="/docs" if app_settings.env == "dev" else None,  # Deshabilitar docs en producción
-    redoc_url="/redoc" if app_settings.env == "dev" else None,
+    docs_url="/docs" if app_settings.environment == "development" else None,  # Deshabilitar docs en producción
+    redoc_url="/redoc" if app_settings.environment == "development" else None,
 )
 
 # Configurar CORS dinámicamente
@@ -56,7 +56,7 @@ async def add_security_headers(request: Request, call_next):
     response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
     
     # Solo agregar HSTS en producción con HTTPS
-    if app_settings.env == "production":
+    if app_settings.environment == "production":
         response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
         response.headers["Content-Security-Policy"] = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'"
     
