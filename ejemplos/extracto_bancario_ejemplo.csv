@@ -1,0 +1,10 @@
+Fecha,Descripción,Referencia,Débito,Crédito,Saldo
+2025-01-05,Pago a proveedor ABC SAC,CHQ-001,1500.00,0.00,8500.00
+2025-01-08,Cobro de cliente XYZ EIRL,TRF-001,0.00,2500.00,11000.00
+2025-01-12,Pago servicios básicos,CHQ-002,350.00,0.00,10650.00
+2025-01-15,Depósito en efectivo,,0.00,800.00,11450.00
+2025-01-20,Transferencia a cuenta corriente,TRF-002,1200.00,0.00,10250.00
+2025-01-25,Cobro factura 001-001,TRF-003,0.00,1800.00,12050.00
+2025-01-28,Comisión mensual,,50.00,0.00,12000.00
+2025-01-30,Intereses ganados,,0.00,50.00,12050.00
+

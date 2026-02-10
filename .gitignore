@@ -1,0 +1,35 @@
+# Entornos virtuales Python
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Node / React
+node_modules/
+dist/
+build/
+
+# Archivos de entorno
+.env
+.env.*
+!.env.example  # dejamos una plantilla
+
+# Logs
+logs/
+*.log
+
+# IDEs / editores
+.vscode/
+.idea/
+*.swp
+
+# Cobertura de tests (pytest-cov)
+htmlcov/
+.coverage
+.pytest_cache/
+
+# Otros
+.DS_Store

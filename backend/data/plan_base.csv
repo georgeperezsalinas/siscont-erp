@@ -1,0 +1,76 @@
+code,name,level,type,active,class_code,class_name
+10,Caja y Bancos,1,ACTIVO,1,10,Caja y Bancos
+10.10,Caja,2,ACTIVO,1,10,Caja y Bancos
+10.11,Caja Chica,2,ACTIVO,1,10,Caja y Bancos
+10.20,Bancos,2,ACTIVO,1,10,Caja y Bancos
+10.21,Banco Nacional,3,ACTIVO,1,10,Caja y Bancos
+10.22,Banco Extranjero,3,ACTIVO,1,10,Caja y Bancos
+12,Cuentas por Cobrar,1,ACTIVO,1,12,Cuentas por Cobrar
+12.10,Clientes,2,ACTIVO,1,12,Cuentas por Cobrar
+12.11,Clientes Relacionados,2,ACTIVO,1,12,Cuentas por Cobrar
+12.20,Detracciones por Cobrar,2,ACTIVO,1,12,Cuentas por Cobrar
+12.30,Otras Cuentas por Cobrar,2,ACTIVO,1,12,Cuentas por Cobrar
+20,Existencias,1,ACTIVO,1,20,Existencias
+20.10,Mercaderías,2,ACTIVO,1,20,Existencias
+20.20,Productos Terminados,2,ACTIVO,1,20,Existencias
+20.30,Materias Primas,2,ACTIVO,1,20,Existencias
+33,Activo Fijo,1,ACTIVO,1,33,Activo Fijo
+33.10,Inmuebles,2,ACTIVO,1,33,Activo Fijo
+33.20,Maquinaria y Equipo,2,ACTIVO,1,33,Activo Fijo
+33.30,Equipos de Cómputo,2,ACTIVO,1,33,Activo Fijo
+33.90,Depreciación Acumulada,2,PASIVO,1,33,Activo Fijo
+40,Tributos,1,PASIVO,1,40,Tributos
+40.10,IGV Débito Fiscal (por pagar),2,PASIVO,1,40,Tributos
+40.11,IGV Crédito Fiscal,2,ACTIVO,1,40,Tributos
+40.12,Retenciones,2,PASIVO,1,40,Tributos
+40.13,Percepciones,2,PASIVO,1,40,Tributos
+40.14,Detracciones por Pagar,2,PASIVO,1,40,Tributos
+40.20,Tributos laborales por pagar,2,PASIVO,1,40,Tributos
+41,Remuneraciones por Pagar,1,PASIVO,1,41,Remuneraciones
+41.10,Sueldos por Pagar,2,PASIVO,1,41,Remuneraciones
+41.20,CTS por Pagar,2,PASIVO,1,41,Remuneraciones
+41.30,Gratificaciones por Pagar,2,PASIVO,1,41,Remuneraciones
+42,Cuentas por Pagar Comerciales,1,PASIVO,1,42,Cuentas por Pagar
+42.10,Proveedores,2,PASIVO,1,42,Cuentas por Pagar
+42.20,Proveedores Relacionados,2,PASIVO,1,42,Cuentas por Pagar
+42.30,Otras Cuentas por Pagar,2,PASIVO,1,42,Cuentas por Pagar
+46,Cuentas por pagar diversas,1,PASIVO,1,46,Cuentas por pagar
+46.10,Aportes sociales por pagar,2,PASIVO,1,46,Cuentas por pagar
+50,Capital,1,PATRIMONIO,1,50,Patrimonio
+50.10,Capital Social,2,PATRIMONIO,1,50,Patrimonio
+58,Reservas,1,PATRIMONIO,1,58,Patrimonio
+58.10,Reserva Legal,2,PATRIMONIO,1,58,Patrimonio
+58.20,Otras Reservas,2,PATRIMONIO,1,58,Patrimonio
+59,Resultados,1,PATRIMONIO,1,59,Resultados
+59.10,Resultados Acumulados,2,PATRIMONIO,1,59,Resultados
+59.20,Resultado del Ejercicio,2,PATRIMONIO,1,59,Resultados
+60,Gastos por Naturaleza,1,GASTO,1,60,Gastos
+60.10,Compras,2,GASTO,1,60,Gastos
+60.11,Gasto de compras,2,GASTO,1,60,Gastos
+60.20,Servicios,2,GASTO,1,60,Gastos
+60.30,Alquileres,2,GASTO,1,60,Gastos
+60.40,Servicios Públicos,2,GASTO,1,60,Gastos
+60.90,Otros Gastos,2,GASTO,1,60,Gastos
+62,Gastos de Personal,1,GASTO,1,62,Gastos
+62.10,Remuneraciones,2,GASTO,1,62,Gastos
+65,Ajustes Contables,1,GASTO,1,65,Ajustes
+65.10,Ajustes por Redondeo,2,GASTO,1,65,Ajustes
+65.20,Castigo de Cuentas Incobrables,2,GASTO,1,65,Ajustes
+65.30,Ajustes de Inventario,2,GASTO,1,65,Ajustes
+68,Gastos Financieros,1,GASTO,1,68,Gastos Financieros
+68.10,Intereses,2,GASTO,1,68,Gastos Financieros
+68.20,Diferencia de Cambio,2,GASTO,1,68,Gastos Financieros
+69,Costos de Ventas,1,GASTO,1,69,Costos
+69.10,Costo de Ventas - Mercaderías,2,GASTO,1,69,Costos
+69.20,Costo de Servicios,2,GASTO,1,69,Costos
+70,Ventas,1,INGRESO,1,70,Ingresos
+70.10,Ventas de Mercaderías,2,INGRESO,1,70,Ingresos
+70.20,Ventas de Servicios,2,INGRESO,1,70,Ingresos
+70.90,Otros Ingresos Operativos,2,INGRESO,1,70,Ingresos
+75,Otros Ingresos,1,INGRESO,1,75,Ingresos
+75.10,Ingresos Financieros,2,INGRESO,1,75,Ingresos
+75.20,Diferencia de Cambio,2,INGRESO,1,75,Ingresos
+90,Cuentas de Orden,1,ACTIVO,1,90,Orden
+90.10,Bienes de Terceros,2,ACTIVO,1,90,Orden
+90.20,Documentos en Custodia,2,ACTIVO,1,90,Orden
+

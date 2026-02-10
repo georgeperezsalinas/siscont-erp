@@ -1,0 +1,394 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-gray-200 dark:border-gray-700;
+  }
+  
+  /* Modo claro mejorado - más color y vida */
+  body {
+    @apply bg-gradient-to-br from-blue-50 via-indigo-50/30 to-purple-50/20 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 text-gray-900 dark:text-gray-50 font-sans antialiased;
+    background-attachment: fixed;
+  }
+  
+  :root {
+    color-scheme: light dark;
+  }
+  
+  /* Dark mode mejorado - más profundidad y contraste */
+  .dark {
+    color-scheme: dark;
+  }
+  
+  /* Añadir gradientes sutiles en modo claro */
+  html:not(.dark) {
+    background: linear-gradient(135deg, #eff6ff 0%, #eef2ff 25%, #faf5ff 50%, #fef3ff 75%, #f0f9ff 100%);
+    background-attachment: fixed;
+  }
+  
+  /* Estilos base para inputs y selects - modo claro con más color */
+  input,
+  textarea,
+  select {
+    @apply bg-white/80 backdrop-blur-sm text-gray-900 border-gray-300/80 shadow-sm;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(238, 242, 255, 0.4));
+  }
+  
+  input:focus,
+  textarea:focus,
+  select:focus {
+    @apply border-primary-500 ring-primary-500/30 bg-white/95 shadow-md;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.98), rgba(238, 242, 255, 0.6));
+  }
+  
+  option {
+    @apply bg-white text-gray-900;
+  }
+  
+  /* Dark mode mejorado - mejor contraste y profundidad */
+  .dark select {
+    @apply bg-gray-800/90 backdrop-blur-sm text-gray-100 border-gray-700/80 shadow-lg;
+    background-image: linear-gradient(to bottom, rgba(31, 41, 55, 0.95), rgba(17, 24, 39, 0.85));
+  }
+  
+  .dark option {
+    @apply bg-gray-800 text-gray-100;
+  }
+  
+  .dark input,
+  .dark textarea,
+  .dark select {
+    @apply bg-gray-800/90 backdrop-blur-sm text-gray-100 border-gray-700/80 shadow-lg;
+    background-image: linear-gradient(to bottom, rgba(31, 41, 55, 0.95), rgba(17, 24, 39, 0.85));
+  }
+  
+  .dark input:focus,
+  .dark textarea:focus,
+  .dark select:focus {
+    @apply bg-gray-800/95 border-primary-500 ring-primary-500/50 shadow-xl;
+    background-image: linear-gradient(to bottom, rgba(31, 41, 55, 0.98), rgba(17, 24, 39, 0.9));
+  }
+}
+
+@layer components {
+  /* Cards mejoradas - más color en modo claro, mejor contraste en oscuro */
+  .card {
+    @apply bg-white/90 backdrop-blur-sm dark:bg-gray-800/95 dark:backdrop-blur-sm border border-gray-200/80 dark:border-gray-700/80 rounded-2xl shadow-sm dark:shadow-xl dark:shadow-gray-950/80 overflow-hidden transition-all duration-200 hover:shadow-md dark:hover:shadow-2xl dark:hover:shadow-gray-950;
+    background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.95), rgba(238, 242, 255, 0.5));
+  }
+  
+  .dark .card {
+    background-image: linear-gradient(to bottom right, rgba(31, 41, 55, 0.95), rgba(17, 24, 39, 0.8));
+  }
+  
+  /* Mejorar visibilidad en dark mode con mejor contraste */
+  .dark input,
+  .dark textarea {
+    @apply bg-gray-800/90 text-gray-100 border-gray-700/80;
+  }
+  
+  /* Estilos estandarizados para tablas en modo oscuro */
+  .dark table {
+    @apply text-gray-100;
+  }
+  
+  .dark thead {
+    background-image: linear-gradient(to bottom, rgba(17, 24, 39, 0.95), rgba(31, 41, 55, 0.95), rgba(17, 24, 39, 0.9));
+  }
+  
+  .dark th {
+    @apply bg-gray-900/95 text-gray-200 border-gray-700/80;
+    background-image: linear-gradient(to bottom, rgba(17, 24, 39, 0.95), rgba(31, 41, 55, 0.95), rgba(17, 24, 39, 0.9));
+  }
+  
+  .dark tbody tr {
+    @apply border-gray-700/60;
+  }
+  
+  .dark tbody tr:nth-child(even) {
+    @apply bg-gray-800/50;
+  }
+  
+  .dark tbody tr:nth-child(odd) {
+    @apply bg-gray-900/30;
+  }
+  
+  .dark td {
+    @apply border-gray-700/60 text-gray-100;
+  }
+  
+  /* Estilos estandarizados para tablas en modo claro */
+  table {
+    @apply bg-transparent;
+  }
+  
+  thead {
+    background-image: linear-gradient(to bottom, rgba(239, 246, 255, 0.8), rgba(238, 242, 255, 0.6), rgba(250, 245, 255, 0.4));
+  }
+  
+  th {
+    @apply bg-gradient-to-b from-blue-50/80 via-indigo-50/60 to-purple-50/40 border-gray-200/80 text-gray-800;
+  }
+  
+  tbody tr {
+    @apply border-gray-100/80;
+  }
+  
+  tbody tr:nth-child(even) {
+    @apply bg-white/60 backdrop-blur-sm;
+  }
+  
+  tbody tr:nth-child(odd) {
+    @apply bg-gray-50/60 backdrop-blur-sm;
+  }
+  
+  td {
+    @apply bg-transparent border-gray-200/60 text-gray-900;
+  }
+  
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .btn-primary {
+    @apply btn bg-primary-600 hover:bg-primary-700 text-white;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100;
+  }
+  
+  .btn-outline {
+    @apply btn border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300;
+  }
+  
+  .input {
+    @apply w-full px-4 py-2.5 border border-gray-300/80 dark:border-gray-700/80 bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm text-gray-900 dark:text-gray-100 rounded-xl focus:ring-2 focus:ring-primary-500/30 dark:focus:ring-primary-500/50 focus:border-transparent outline-none transition-all duration-200 shadow-sm dark:shadow-lg;
+  }
+  
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .badge-success {
+    @apply badge bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400;
+  }
+  
+  .badge-warning {
+    @apply badge bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400;
+  }
+  
+  .badge-error {
+    @apply badge bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-400;
+  }
+  
+  .badge-info {
+    @apply badge bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400;
+  }
+
+  /* Mejoras visuales profesionales */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-slide-in-right {
+    animation: slideInRight 0.3s ease-out;
+  }
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Sombras más profesionales y suaves */
+  .card {
+    @apply shadow-sm dark:shadow-xl dark:shadow-gray-950/50;
+    box-shadow: 0 1px 3px 0 rgba(99, 102, 241, 0.1), 0 1px 2px 0 rgba(99, 102, 241, 0.06);
+  }
+  
+  .dark .card {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Transiciones suaves globales */
+  * {
+    transition-property: color, background-color, border-color, opacity, transform, box-shadow;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Animación de onda para skeleton */
+  @keyframes wave {
+    0% {
+      transform: translateX(-100%);
+    }
+    50% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  /* Animación shimmer para efectos de brillo */
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  /* Animación de pulso suave */
+  @keyframes pulse-soft {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+  
+  /* Mejor espaciado y jerarquía visual */
+  h1, h2, h3 {
+    @apply font-bold tracking-tight;
+  }
+  
+  /* Mejoras en inputs con mejor feedback */
+  input:focus, textarea:focus, select:focus {
+    @apply ring-2 ring-primary-500/30 dark:ring-primary-500/50 shadow-md dark:shadow-lg;
+  }
+  
+  /* Efectos hover mejorados en modo claro */
+  html:not(.dark) button:hover,
+  html:not(.dark) a:hover {
+    transition: all 0.2s ease;
+  }
+  
+  /* Mejorar contraste en modo oscuro */
+  .dark {
+    --tw-ring-offset-color: rgb(17, 24, 39);
+  }
+  
+  /* Añadir efectos de brillo sutiles en modo claro */
+  html:not(.dark) .card:hover {
+    box-shadow: 0 4px 12px 0 rgba(99, 102, 241, 0.15), 0 2px 4px 0 rgba(99, 102, 241, 0.1);
+  }
+  
+  /* Mejorar sidebar en modo oscuro */
+  .dark aside {
+    background-image: linear-gradient(to bottom, rgba(31, 41, 55, 0.98), rgba(17, 24, 39, 0.95));
+  }
+  
+  /* Mejorar header en modo oscuro */
+  .dark header {
+    background-image: linear-gradient(to bottom, rgba(17, 24, 39, 0.98), rgba(31, 41, 55, 0.95));
+  }
+  
+  /* Estilos para scrollbar del sidebar - profesional y discreto */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(156, 163, 175, 0.3) transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.3);
+    border-radius: 3px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .scrollbar-thin:hover::-webkit-scrollbar-thumb,
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(156, 163, 175, 0.5);
+  }
+  
+  .dark .scrollbar-thin {
+    scrollbar-color: rgba(75, 85, 99, 0.5) transparent;
+  }
+  
+  .dark .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgba(75, 85, 99, 0.5);
+  }
+  
+  .dark .scrollbar-thin:hover::-webkit-scrollbar-thumb,
+  .dark .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(75, 85, 99, 0.7);
+  }
+  
+  /* Mejorar modo claro del scrollbar */
+  .scrollbar-thin {
+    scrollbar-color: rgba(99, 102, 241, 0.3) transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgba(99, 102, 241, 0.3);
+  }
+  
+  .scrollbar-thin:hover::-webkit-scrollbar-thumb,
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(99, 102, 241, 0.5);
+  }
+  
+  /* Estilos para selectores estilo AdminLTE 3 */
+  select.adminlte-select {
+    background-color: transparent !important;
+    background-image: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    cursor: pointer;
+  }
+  
+  select.adminlte-select::-ms-expand {
+    display: none;
+  }
+  
+  select.adminlte-select option {
+    background: white !important;
+    color: #1f2937 !important;
+    padding: 8px 12px !important;
+    border: none !important;
+  }
+  
+  .dark select.adminlte-select option {
+    background: #1f2937 !important;
+    color: #f3f4f6 !important;
+  }
+  
+  /* Hacer que todo el contenedor del select sea clickeable */
+  select.adminlte-select {
+    position: relative;
+    z-index: 20;
+  }
+  
+}

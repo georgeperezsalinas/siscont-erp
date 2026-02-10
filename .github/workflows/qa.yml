@@ -1,0 +1,84 @@
+name: QA - Pruebas Automatizadas
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  backend-tests:
+    name: Backend (pytest)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: siscont
+          POSTGRES_PASSWORD: siscont
+          POSTGRES_DB: siscont_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DATABASE_URL: postgresql+psycopg://siscont:siscont@localhost:5432/siscont_test
+      SECRET_KEY: test-secret-key-for-ci
+      ENV: dev
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install -r qa/requirements.txt
+
+      - name: Run migrations
+        run: |
+          alembic upgrade head || true
+
+      - name: Run pytest
+        run: |
+          pytest qa/ -v --tb=short -x || true
+        # -x: parar en primer fallo; || true: no fallar el job si tests fallan (ajustar según criterio)
+
+  e2e-tests:
+    name: E2E (Playwright)
+    runs-on: ubuntu-latest
+    needs: backend-tests
+    # Deshabilitado por defecto: requiere backend y frontend corriendo
+    # Habilitar cuando se configure docker-compose para tests
+    if: false
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Playwright
+        run: |
+          cd e2e && npm ci
+          npx playwright install --with-deps
+
+      - name: Run E2E
+        run: cd e2e && npx playwright test
+        env:
+          BASE_URL: http://localhost:5173

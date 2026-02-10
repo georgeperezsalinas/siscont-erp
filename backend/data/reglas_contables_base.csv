@@ -1,0 +1,43 @@
+evento_tipo,condicion,lado,tipo_cuenta,tipo_monto,orden,config,activo
+COMPRA,,DEBE,GASTO_COMPRAS,BASE,1,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+COMPRA,,DEBE,IGV_CREDITO,IGV,2,"{""igv_rate"": 0.18, ""system_rule"": true, ""engine_version"": ""1.2""}",1
+COMPRA,,HABER,PROVEEDORES,TOTAL,3,"{""igv_rate"": 0.18, ""system_rule"": true, ""engine_version"": ""1.2""}",1
+VENTA,,DEBE,CLIENTES,TOTAL,1,"{""igv_rate"": 0.18, ""system_rule"": true, ""engine_version"": ""1.2""}",1
+VENTA,,HABER,INGRESO_VENTAS,BASE,2,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+VENTA,,HABER,IGV_DEBITO,IGV,3,"{""igv_rate"": 0.18, ""system_rule"": true, ""engine_version"": ""1.2""}",1
+PAGO,,DEBE,PROVEEDORES,TOTAL,1,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+PAGO,,HABER,CAJA,TOTAL,2,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+COBRO,,DEBE,CAJA,TOTAL,1,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+COBRO,,HABER,CLIENTES,TOTAL,2,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+COBRO_CAJA,,DEBE,CAJA,TOTAL,1,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+COBRO_CAJA,,HABER,CLIENTES,TOTAL,2,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+COBRO_BANCO,,DEBE,BANCO,TOTAL,1,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+COBRO_BANCO,,HABER,CLIENTES,TOTAL,2,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+PAGO_CAJA,,DEBE,PROVEEDORES,TOTAL,1,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+PAGO_CAJA,,HABER,CAJA,TOTAL,2,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+PAGO_BANCO,,DEBE,PROVEEDORES,TOTAL,1,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+PAGO_BANCO,,HABER,BANCO,TOTAL,2,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+ENTRADA_INVENTARIO,,DEBE,INVENTARIO,TOTAL,1,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+ENTRADA_INVENTARIO,,HABER,PROVEEDORES,TOTAL,2,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+SALIDA_INVENTARIO,,DEBE,COSTO_VENTAS,TOTAL,1,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+SALIDA_INVENTARIO,,HABER,INVENTARIO,TOTAL,2,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+AJUSTE_INVENTARIO,cantidad > 0,DEBE,INVENTARIO,TOTAL,1,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+AJUSTE_INVENTARIO,cantidad > 0,HABER,RESULTADOS,TOTAL,2,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+AJUSTE_INVENTARIO,cantidad < 0,DEBE,RESULTADOS,TOTAL,3,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+AJUSTE_INVENTARIO,cantidad < 0,HABER,INVENTARIO,TOTAL,4,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+NOTA_CREDITO_VENTA,,DEBE,INGRESO_VENTAS,BASE,1,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+NOTA_CREDITO_VENTA,,DEBE,IGV_DEBITO,IGV,2,"{""igv_rate"": 0.18, ""system_rule"": true, ""engine_version"": ""1.2""}",1
+NOTA_CREDITO_VENTA,,HABER,CLIENTES,TOTAL,3,"{""igv_rate"": 0.18, ""system_rule"": true, ""engine_version"": ""1.2""}",1
+NOTA_DEBITO_VENTA,,DEBE,CLIENTES,TOTAL,1,"{""igv_rate"": 0.18, ""system_rule"": true, ""engine_version"": ""1.2""}",1
+NOTA_DEBITO_VENTA,,HABER,INGRESO_VENTAS,BASE,2,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+NOTA_DEBITO_VENTA,,HABER,IGV_DEBITO,IGV,3,"{""igv_rate"": 0.18, ""system_rule"": true, ""engine_version"": ""1.2""}",1
+NOTA_CREDITO_COMPRA,,DEBE,PROVEEDORES,TOTAL,1,"{""igv_rate"": 0.18, ""system_rule"": true, ""engine_version"": ""1.2""}",1
+NOTA_CREDITO_COMPRA,,HABER,GASTO_COMPRAS,BASE,2,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+NOTA_CREDITO_COMPRA,,HABER,IGV_CREDITO,IGV,3,"{""igv_rate"": 0.18, ""system_rule"": true, ""engine_version"": ""1.2""}",1
+NOTA_DEBITO_COMPRA,,DEBE,GASTO_COMPRAS,BASE,1,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+NOTA_DEBITO_COMPRA,,DEBE,IGV_CREDITO,IGV,2,"{""igv_rate"": 0.18, ""system_rule"": true, ""engine_version"": ""1.2""}",1
+NOTA_DEBITO_COMPRA,,HABER,PROVEEDORES,TOTAL,3,"{""igv_rate"": 0.18, ""system_rule"": true, ""engine_version"": ""1.2""}",1
+PLANILLA_PROVISION,,DEBE,GASTO_PERSONAL,TOTAL_GASTO,1,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+PLANILLA_PROVISION,,HABER,REMUNERACIONES_POR_PAGAR,NETO_TRABAJADOR,2,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+PLANILLA_PROVISION,,HABER,TRIBUTOS_POR_PAGAR,DESCUENTOS_TRABAJADOR,3,"{""system_rule"": true, ""engine_version"": ""1.2""}",1
+PLANILLA_PROVISION,,HABER,APORTES_POR_PAGAR,APORTES_EMPLEADOR,4,"{""system_rule"": true, ""engine_version"": ""1.2""}",1

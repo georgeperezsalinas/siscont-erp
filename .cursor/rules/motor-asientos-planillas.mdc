@@ -1,0 +1,27 @@
+---
+description: Motor de Asientos - Soporte contable de Planillas (SISCONT)
+globs: backend/**/*journal_engine*.py, backend/**/*motor*.py, backend/data/*contables*.csv, backend/data/tipo_cuenta_mapeos*.csv
+alwaysApply: false
+---
+
+# Motor de Asientos - Planillas
+
+SISCONT **no calcula** planillas (RRHH); solo **registra contablemente** el resultado.
+
+## Tipos de cuenta planilla
+- GASTO_PERSONAL → 62.10 (RESULTADO)
+- REMUNERACIONES_POR_PAGAR → 41.10 (PASIVO)
+- TRIBUTOS_POR_PAGAR → 40.20 (PASIVO)
+- APORTES_POR_PAGAR → 46.10 (PASIVO)
+
+## Evento PLANILLA_PROVISION
+Reglas: DEBE GASTO_PERSONAL (TOTAL_GASTO); HABER REMUNERACIONES_POR_PAGAR (NETO_TRABAJADOR), TRIBUTOS_POR_PAGAR (DESCUENTOS_TRABAJADOR), APORTES_POR_PAGAR (APORTES_EMPLEADOR).
+
+Cuadre obligatorio: total_gasto = neto_trabajador + descuentos_trabajador + aportes_empleador.
+No permitir IGV ni CLIENTES/PROVEEDORES en PLANILLA_PROVISION.
+
+## Pagos
+Reutilizar PAGO, PAGO_CAJA, PAGO_BANCO contra cuentas de planilla. No crear eventos nuevos.
+
+## Referencia
+Ver docs/REGLAS_PLANILLAS_MOTOR_ASIENTOS.md para detalles completos.

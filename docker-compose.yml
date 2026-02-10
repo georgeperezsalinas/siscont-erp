@@ -1,0 +1,56 @@
+
+version: '3.9'
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: siscont
+      POSTGRES_USER: siscont
+      POSTGRES_PASSWORD: s1scont
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U siscont -d siscont"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    ports:
+      - "5432:5432"
+
+  backend:
+    build: ./backend
+    environment:
+      - DATABASE_URL=postgresql+psycopg://siscont:s1scont@db:5432/siscont
+      - UPLOADS_DIR=/app/data/uploads
+      - DOCUMENTS_DIR=/app/data/documents
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    volumes:
+      # Volúmenes persistentes para datos (fuera del contenedor)
+      - siscont_data:/app/data
+      # Volumen para código (opcional, solo en desarrollo)
+      # - ./backend:/app
+
+  frontend:
+    image: nginx:1.27-alpine
+    depends_on:
+      - backend
+    ports:
+      - "5173:80"
+    volumes:
+      - ./frontend/dist:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+
+volumes:
+  pgdata:
+    # Volumen persistente para base de datos PostgreSQL
+  siscont_data:
+    # Volumen persistente para datos de la aplicación:
+    # - Base de datos SQLite (si se usa como alternativa)
+    # - Archivos subidos (uploads/)
+    # - Documentos digitalizados (documents/)
+    # - Logs (logs/)
+    # Este volumen persiste aunque se elimine/reconstruya el contenedor

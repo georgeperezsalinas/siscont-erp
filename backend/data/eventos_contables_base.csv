@@ -1,0 +1,18 @@
+tipo,nombre,descripcion,categoria,activo
+AJUSTE_INVENTARIO,Ajuste de Inventario,Registra ajustes de inventario (sobrantes o faltantes),INVENTARIOS,1
+COBRO,Cobro de Cliente,Registra cobros de clientes,GENERAL,1
+COBRO_BANCO,Cobro en Banco,Registra cobros de clientes por transferencia bancaria,TESORERIA,1
+COBRO_CAJA,Cobro en Caja,Registra cobros de clientes en efectivo (caja),TESORERIA,1
+COMPRA,Compra de Bienes/Servicios,Registra compras de bienes o servicios con IGV,GENERAL,1
+ENTRADA_INVENTARIO,Entrada de Inventario,Registra entradas de inventario (compras producción ajustes positivos),INVENTARIOS,1
+NOTA_CREDITO_COMPRA,Nota de Crédito - Compra,Nota de Crédito que reduce o anula una compra (devolución descuento error),COMPRAS,1
+NOTA_CREDITO_VENTA,Nota de Crédito - Venta,Nota de Crédito que reduce o anula una venta (devolución descuento error),VENTAS,1
+NOTA_DEBITO_COMPRA,Nota de Débito - Compra,Nota de Débito que incrementa una compra (intereses penalidades gastos adicionales),COMPRAS,1
+NOTA_DEBITO_VENTA,Nota de Débito - Venta,Nota de Débito que incrementa una venta (intereses penalidades gastos adicionales),VENTAS,1
+PAGO,Pago a Proveedor,Registra pagos a proveedores,GENERAL,1
+PAGO_BANCO,Pago en Banco,Registra pagos a proveedores por transferencia bancaria,TESORERIA,1
+PAGO_CAJA,Pago en Caja,Registra pagos a proveedores en efectivo (caja),TESORERIA,1
+PLANILLA_PROVISION,Provisión de Planilla,Registro de provisión mensual de planilla (gastos y obligaciones),GENERAL,1
+SALIDA_INVENTARIO,Salida de Inventario,Registra salidas de inventario (ventas consumo ajustes negativos mermas),INVENTARIOS,1
+TRANSFERENCIA,Transferencia entre Cuentas,Registra transferencias entre caja y banco,TESORERIA,0
+VENTA,Venta de Bienes/Servicios,Registra ventas de bienes o servicios con IGV,GENERAL,1
