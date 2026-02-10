@@ -243,7 +243,7 @@ export default function Plan() {
       {/* Page Header */}
       <PageHeader
         title="Plan de Cuentas"
-        subtitle="Gestiona tu plan contable (PCGE 2019) para la empresa seleccionada"
+        subtitle="Plan Contable de Empresa Activa"
         icon={BookOpen}
         iconColor="primary"
         actions={
