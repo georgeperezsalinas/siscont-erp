@@ -17,7 +17,7 @@ from .api.routers import (
 )
 
 # ======================================================
-# 📁 DIRECTORIOS OFICIALES SISCONT (ÚNICA FUENTE)
+# 📁 DIRECTORIOS OFICIALES SISCONT (ÚNICA FUENTE) ------
 # ======================================================
 BASE_DATA_DIR = settings.uploads_path.parent   # data/
 UPLOADS_DIR = settings.uploads_path

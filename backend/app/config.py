@@ -6,7 +6,7 @@ import secrets
 BASE_DIR = Path(__file__).resolve().parent.parent  # backend/
 
 class Settings(BaseSettings):
-    # ===== ENTORNO =====
+    # ===== ENTORNO =========
     environment: str = Field(default="development", env="ENVIRONMENT")
     debug: bool = Field(default=False, env="DEBUG")
 
