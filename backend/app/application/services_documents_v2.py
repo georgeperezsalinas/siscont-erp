@@ -26,10 +26,21 @@ class DocumentService:
     
     def __init__(self, db: Session, storage: Optional[FileStorageService] = None):
         self.db = db
+
+        documents_base_path = settings.uploads_path.parent / "documents"
+
+        self.storage = storage or get_storage_service(
+            storage_type="local",
+            base_path=documents_base_path
+        )
+
+        '''
         self.storage = storage or get_storage_service(
             storage_type="local",
             base_path=settings.uploads_dir.replace("/uploads", "/documents") if hasattr(settings, 'uploads_dir') else None
         )
+
+        '''
         self.extractor = DocumentExtractor()
     
     def upload_document(

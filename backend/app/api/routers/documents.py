@@ -25,10 +25,13 @@ def get_documents_storage_service():
     Helper para obtener el storage service con la ruta correcta de documentos.
     Compatible con Windows, Linux y Docker.
     """
-    uploads_dir = getattr(settings, 'uploads_dir', './data/uploads')
-    base = Path(uploads_dir)
-    documents_base_path = str(base.parent / 'documents') if base.name == 'uploads' else str(base / 'documents')
+    #uploads_dir = getattr(settings, 'uploads_dir', './data/uploads')
+    #base = Path(uploads_dir)
+    #documents_base_path = str(base.parent / 'documents') if base.name == 'uploads' else str(base / 'documents')
     
+    documents_base_path = settings.uploads_path.parent / "documents"
+
+
     return get_storage_service(
         storage_type="local",
         base_path=documents_base_path
