@@ -5,6 +5,8 @@
 **Versión:** 1.0  
 **Última actualización:** Febrero 2026  
 **Sistema:** SISCONT (Sistema Contable Peruano)
+**Desarrollador:** JORGE PEREZ SALINAS
+**Empresa:** QSD SOFT
 
 ---
 

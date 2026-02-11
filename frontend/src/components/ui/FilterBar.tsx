@@ -21,10 +21,11 @@ export function FilterBar({
   showClearButton = true,
 }: FilterBarProps) {
   return (
-    <div className={cn('flex flex-col sm:flex-row gap-3 mb-6', className)}>
+    <div className={cn('flex flex-col sm:flex-row gap-2 mb-3', className)}>
       {/* Barra de búsqueda */}
       <div className="relative flex-1 min-w-[250px]">
         <Input
+          className="h-9 text-sm"
           type="text"
           value={searchValue}
           onChange={(e) => onSearchChange(e.target.value)}
@@ -47,7 +48,7 @@ export function FilterBar({
 
       {/* Filtros adicionales */}
       {children && (
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2 min-h-[36px]">
           {children}
         </div>
       )}

@@ -48,9 +48,9 @@ const REPORT_TYPE_LABELS: Record<string, string> = {
 
 // Nombres de categorías (pestañas)
 const TAB_LABELS: Record<string, string> = {
-  nivel1: 'Libros Contables',
-  nivel2: 'Estados Financieros',
-  nivel3: 'Reportes Operativos',
+  nivel1: 'Libros',
+  nivel2: 'EE FF',
+  nivel3: 'Operativos',
   nivel4: 'Control y Cuadratura',
   nivel5: 'Auditoría y Trazabilidad',
 }
@@ -366,6 +366,7 @@ export default function Reportes() {
       />
 
       {/* Contexto + reporte activo - SAP-style */}
+      {/*
       <div className="flex flex-wrap items-center gap-4 px-4 py-2 bg-primary-50 dark:bg-primary-900/20 rounded-lg border border-primary-200 dark:border-primary-800">
         <div className="flex items-center gap-2">
           <span className="text-xs font-bold text-primary-600 dark:text-primary-400 uppercase tracking-wider">Contexto</span>
@@ -387,50 +388,52 @@ export default function Reportes() {
           </span>
         </div>
       </div>
+      */}
 
       {/* Filtros */}
       <Card>
-        <CardHeader title="Filtros" />
-        <div className="p-4 grid grid-cols-1 md:grid-cols-4 gap-4">
+      
+        <div className="p-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2">
+
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-0.5">
               Período
             </label>
             <input
               type="month"
-              className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-700"
+              className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1.5 h-9 text-sm bg-white dark:bg-gray-700"
               value={period}
               onChange={(e) => setPeriod(e.target.value)}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-0.5">
               Fecha Desde
             </label>
             <input
               type="date"
-              className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-700"
+              className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1.5 h-9 text-sm bg-white dark:bg-gray-700"
               value={fechaDesde}
               onChange={(e) => setFechaDesde(e.target.value)}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-0.5">
               Fecha Hasta
             </label>
             <input
               type="date"
-              className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-700"
+              className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1.5 h-9 text-sm bg-white dark:bg-gray-700"
               value={fechaHasta}
               onChange={(e) => setFechaHasta(e.target.value)}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-0.5">
               Origen
             </label>
             <select
-              className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-700"
+              className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1.5 h-9 text-sm bg-white dark:bg-gray-700"
               value={origin}
               onChange={(e) => setOrigin(e.target.value)}
             >
@@ -478,7 +481,7 @@ export default function Reportes() {
               }`}
             >
               <TrendingUp className="w-4 h-4" />
-              Estados Financieros
+              EE FF
               {activeTab === 'nivel2' && (
                 <span className="ml-1 px-1.5 py-0.5 rounded bg-primary-600 text-white text-xs font-medium">
                   {REPORT_TYPE_LABELS[reportType]}
@@ -496,7 +499,7 @@ export default function Reportes() {
               }`}
             >
               <Package className="w-4 h-4" />
-              Reportes Operativos
+              Operativos
               {activeTab === 'nivel3' && (
                 <span className="ml-1 px-1.5 py-0.5 rounded bg-primary-600 text-white text-xs font-medium">
                   {REPORT_TYPE_LABELS[reportType]}

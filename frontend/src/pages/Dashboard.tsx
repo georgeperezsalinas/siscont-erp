@@ -15,6 +15,8 @@ import { Button } from '@/components/ui/Button'
 import { getDashboardSummary, getMyPermissions, type DashboardSummary, getDetractionsSummary, type DetractionsSummary } from '@/api'
 import { showMessage } from '@/lib/utils'
 import { InfoTooltip } from '@/components/ui/Tooltip'
+import { DollarSign } from 'lucide-react'
+
 
 function MetricCard({ 
   title, 

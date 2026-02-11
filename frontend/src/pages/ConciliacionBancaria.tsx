@@ -403,7 +403,7 @@ export default function ConciliacionBancaria() {
       {/* Page Header */}
       <PageHeader
         title="Conciliación Bancaria"
-        subtitle="Reconciliación mensual de saldos bancarios con la contabilidad. Compara el extracto bancario con los movimientos contables."
+        subtitle="Conciliación mensual de saldos bancarios."
         icon={Wallet}
         iconColor="primary"
         actions={

@@ -434,7 +434,7 @@ export default function Terceros() {
       {/* Page Header */}
       <PageHeader
         title="Proveedores y Clientes"
-        subtitle="Registro de Proveedores y Clientes según normativa contable peruana"
+        subtitle="Registro de Proveedores y Clientes"
         icon={Users}
         iconColor="primary"
         actions={

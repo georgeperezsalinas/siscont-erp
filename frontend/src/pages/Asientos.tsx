@@ -1572,7 +1572,7 @@ export default function Asientos() {
       {/* Page Header */}
       <PageHeader
         title="Asientos Contables"
-        subtitle="Registra y gestiona asientos contables según partida doble (PCGE)"
+        subtitle="Asientos contables según partida doble (PCGE)"
         icon={FileText}
         iconColor="primary"
         actions={

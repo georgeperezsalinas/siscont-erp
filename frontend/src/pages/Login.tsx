@@ -105,6 +105,9 @@ export default function LoginPage() {
 
         <div className="text-xs text-slate-400">
           © 2026 SISCONT ERP · Versión 1.0.0 · Producción
+            <div className="w-14 h-8 rounded-1xl bg-white/14 flex items-center justify-center">
+               <img src="/logo_qsd.png" alt="QSD SOFT" className="w-13 h-7 object-contain" />
+            </div>  <a href="https://qsdsoft.com" target='_blank'>QSD Soft</a>
         </div>
       </div>
 

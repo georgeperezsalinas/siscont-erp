@@ -262,7 +262,7 @@ export default function Diarios() {
       {/* Page Header */}
       <PageHeader
         title="Libro Diario"
-        subtitle={`Registro cronológico de todos los asientos contables del periodo ${periodo}`}
+        subtitle={`Asientos contables del periodo ${periodo}`}
         icon={BookOpen}
         iconColor="primary"
         actions={

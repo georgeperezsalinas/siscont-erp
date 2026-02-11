@@ -569,7 +569,7 @@ export default function Inventarios() {
       {/* Page Header */}
       <PageHeader
         title="Inventarios"
-        subtitle="Gestiona productos y movimientos de inventario según metodología contable peruana"
+        subtitle="Productos y movimientos de inventario."
         icon={Package}
         iconColor="primary"
         actions={

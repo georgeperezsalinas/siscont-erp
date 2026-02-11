@@ -624,7 +624,7 @@ export default function Compras() {
       {/* Page Header */}
       <PageHeader
         title="Compras"
-        subtitle="Gestiona tus compras. ✅ Los asientos contables se generan automáticamente"
+        subtitle="✅ Los asientos contables se generan automáticamente"
         icon={ShoppingCart}
         iconColor="primary"
         actions={

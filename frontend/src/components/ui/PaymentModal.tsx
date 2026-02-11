@@ -196,7 +196,7 @@ export function PaymentModal({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" onClick={onClose}></div>
-      <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl w-full max-w-md">
+      <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl w-full max-w-4xl">
         {/* Header */}
         <div className={`bg-gradient-to-r ${isCollection ? 'from-green-600 to-green-700' : 'from-blue-600 to-blue-700'} text-white p-6 rounded-t-2xl`}>
           <div className="flex items-center justify-between">
@@ -218,7 +218,8 @@ export function PaymentModal({
         </div>
 
         {/* Content */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-4">
+        <form onSubmit={handleSubmit} className="p-6 xspace-y-4">
+
           {/* Información del documento */}
           <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 space-y-2">
             <div className="flex justify-between text-sm">
@@ -235,145 +236,149 @@ export function PaymentModal({
             )}
           </div>
 
-          {/* Fecha */}
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-              <Calendar className="w-4 h-4 inline mr-1" />
-              Fecha <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="date"
-              value={formData.payment_date}
-              onChange={(e) => setFormData({ ...formData, payment_date: e.target.value })}
-              className={`w-full border rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 ${
-                errors.payment_date ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-              }`}
-              required
-            />
-            {errors.payment_date && (
-              <p className="text-xs text-red-600 dark:text-red-400 mt-1">{errors.payment_date}</p>
-            )}
-          </div>
+          {/* FORMULARIO EN DOS COLUMNAS */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            {/* Fecha */}
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
+                <Calendar className="w-4 h-4 inline mr-1" />
+                Fecha <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="date"
+                value={formData.payment_date}
+                onChange={(e) => setFormData({ ...formData, payment_date: e.target.value })}
+                className={`w-full border rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 ${
+                  errors.payment_date ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+                }`}
+                required
+              />
+              {errors.payment_date && (
+                <p className="text-xs text-red-600 dark:text-red-400 mt-1">{errors.payment_date}</p>
+              )}
+            </div>
 
-          {/* Monto */}
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-              <DollarSign className="w-4 h-4 inline mr-1" />
-              Monto <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="number"
-              step="0.01"
-              min="0.01"
-              max={saldoPendiente !== undefined ? saldoPendiente : totalAmount}
-              value={formData.amount}
-              onChange={(e) => setFormData({ ...formData, amount: parseFloat(e.target.value) || 0 })}
-              className={`w-full border rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 ${
-                errors.amount ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-              }`}
-              placeholder="0.00"
-              required
-            />
-            {errors.amount && (
-              <p className="text-xs text-red-600 dark:text-red-400 mt-1">{errors.amount}</p>
-            )}
-          </div>
 
-          {/* Método de pago */}
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-              <CreditCard className="w-4 h-4 inline mr-1" />
-              Método de Pago
-            </label>
-            <select
-              value={formData.payment_method}
-              onChange={(e) => {
-                setFormData({ 
-                  ...formData, 
-                  payment_method: e.target.value,
-                  cash_account_code: null // Reset cuenta al cambiar método
-                })
-              }}
-              className="w-full border border-gray-300 dark:border-gray-600 rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
-            >
-              <option value="EFECTIVO">Efectivo</option>
-              <option value="TRANSFERENCIA">Transferencia Bancaria</option>
-              <option value="CHEQUE">Cheque</option>
-              <option value="TARJETA">Tarjeta de Crédito/Débito</option>
-              <option value="YAPE">Yape</option>
-              <option value="PLIN">Plin</option>
-              <option value="OTRO">Otro</option>
-            </select>
-          </div>
+            {/* Monto */}
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
+                <DollarSign className="w-4 h-4 inline mr-1" />
+                Monto <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                min="0.01"
+                max={saldoPendiente !== undefined ? saldoPendiente : totalAmount}
+                value={formData.amount}
+                onChange={(e) => setFormData({ ...formData, amount: parseFloat(e.target.value) || 0 })}
+                className={`w-full border rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 ${
+                  errors.amount ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+                }`}
+                placeholder="0.00"
+                required
+              />
+              {errors.amount && (
+                <p className="text-xs text-red-600 dark:text-red-400 mt-1">{errors.amount}</p>
+              )}
+            </div>
 
-          {/* Cuenta Bancaria/Caja */}
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-              <Wallet className="w-4 h-4 inline mr-1" />
-              Cuenta {formData.payment_method === 'EFECTIVO' || formData.payment_method === 'YAPE' || formData.payment_method === 'PLIN' ? 'de Caja' : 'Bancaria'} (Opcional)
-            </label>
-            {loadingAccounts ? (
-              <div className="w-full border border-gray-300 dark:border-gray-600 rounded-xl px-4 py-2.5 text-sm bg-gray-50 dark:bg-gray-700 text-gray-500">
-                Cargando cuentas...
-              </div>
-            ) : (
+            {/* Método de pago */}
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
+                <CreditCard className="w-4 h-4 inline mr-1" />
+                Método de Pago
+              </label>
               <select
-                value={formData.cash_account_code || ''}
-                onChange={(e) => setFormData({ ...formData, cash_account_code: e.target.value || null })}
+                value={formData.payment_method}
+                onChange={(e) => {
+                  setFormData({ 
+                    ...formData, 
+                    payment_method: e.target.value,
+                    cash_account_code: null // Reset cuenta al cambiar método
+                  })
+                }}
                 className="w-full border border-gray-300 dark:border-gray-600 rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
               >
-                <option value="">Seleccionar automáticamente según método de pago</option>
-                {availableAccounts.map(acc => (
-                  <option key={acc.id || acc.code} value={acc.code}>
-                    {acc.name || `${acc.code} - ${acc.name}`}
-                  </option>
-                ))}
+                <option value="EFECTIVO">Efectivo</option>
+                <option value="TRANSFERENCIA">Transferencia Bancaria</option>
+                <option value="CHEQUE">Cheque</option>
+                <option value="TARJETA">Tarjeta de Crédito/Débito</option>
+                <option value="YAPE">Yape</option>
+                <option value="PLIN">Plin</option>
+                <option value="OTRO">Otro</option>
               </select>
-            )}
-            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-              {formData.cash_account_code 
-                ? `Se usará la cuenta: ${formData.cash_account_code}`
-                : formData.payment_method === 'EFECTIVO' || formData.payment_method === 'YAPE' || formData.payment_method === 'PLIN'
-                  ? 'Se seleccionará automáticamente una cuenta de caja (10.1x)'
-                  : 'Se seleccionará automáticamente una cuenta bancaria (10.2x)'}
-            </p>
-          </div>
-
-          {/* Referencia */}
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-              <FileText className="w-4 h-4 inline mr-1" />
-              Referencia (opcional)
-            </label>
-            <input
-              type="text"
-              value={formData.payment_reference || ''}
-              onChange={(e) => setFormData({ ...formData, payment_reference: e.target.value || null })}
-              className="w-full border border-gray-300 dark:border-gray-600 rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
-              placeholder="Número de cheque, transferencia, etc."
-            />
-          </div>
-
-          {/* Observaciones */}
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-              Observaciones (opcional)
-            </label>
-            <textarea
-              value={formData.notes || ''}
-              onChange={(e) => setFormData({ ...formData, notes: e.target.value || null })}
-              className="w-full border border-gray-300 dark:border-gray-600 rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
-              rows={3}
-              placeholder="Notas adicionales..."
-            />
-          </div>
-
-          {/* Error general */}
-          {errors.submit && (
-            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-3">
-              <p className="text-sm text-red-600 dark:text-red-400">{errors.submit}</p>
             </div>
-          )}
+
+            {/* Cuenta Bancaria/Caja */}
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
+                <Wallet className="w-4 h-4 inline mr-1" />
+                Cuenta {formData.payment_method === 'EFECTIVO' || formData.payment_method === 'YAPE' || formData.payment_method === 'PLIN' ? 'de Caja' : 'Bancaria'} (Opcional)
+              </label>
+              {loadingAccounts ? (
+                <div className="w-full border border-gray-300 dark:border-gray-600 rounded-xl px-4 py-2.5 text-sm bg-gray-50 dark:bg-gray-700 text-gray-500">
+                  Cargando cuentas...
+                </div>
+              ) : (
+                <select
+                  value={formData.cash_account_code || ''}
+                  onChange={(e) => setFormData({ ...formData, cash_account_code: e.target.value || null })}
+                  className="w-full border border-gray-300 dark:border-gray-600 rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                >
+                  <option value="">Seleccionar automáticamente según método de pago</option>
+                  {availableAccounts.map(acc => (
+                    <option key={acc.id || acc.code} value={acc.code}>
+                      {acc.name || `${acc.code} - ${acc.name}`}
+                    </option>
+                  ))}
+                </select>
+              )}
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                {formData.cash_account_code 
+                  ? `Se usará la cuenta: ${formData.cash_account_code}`
+                  : formData.payment_method === 'EFECTIVO' || formData.payment_method === 'YAPE' || formData.payment_method === 'PLIN'
+                    ? 'Se seleccionará automáticamente una cuenta de caja (10.1x)'
+                    : 'Se seleccionará automáticamente una cuenta bancaria (10.2x)'}
+              </p>
+            </div>
+
+            {/* Referencia */}
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
+                <FileText className="w-4 h-4 inline mr-1" />
+                Referencia (opcional)
+              </label>
+              <input
+                type="text"
+                value={formData.payment_reference || ''}
+                onChange={(e) => setFormData({ ...formData, payment_reference: e.target.value || null })}
+                className="w-full border border-gray-300 dark:border-gray-600 rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                placeholder="Número de cheque, transferencia, etc."
+              />
+            </div>
+            {/* Observaciones */}
+            <div className="md:col-span-2">
+              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
+                Observaciones (opcional)
+              </label>
+              <textarea
+                value={formData.notes || ''}
+                onChange={(e) => setFormData({ ...formData, notes: e.target.value || null })}
+                className="w-full border border-gray-300 dark:border-gray-600 rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                rows={3}
+                placeholder="Notas adicionales..."
+              />
+            </div>
+
+            {/* Error general */}
+            {errors.submit && (
+              <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-3">
+                <p className="text-sm text-red-600 dark:text-red-400">{errors.submit}</p>
+              </div>
+            )}
+          </div>
+
 
           {/* Actions */}
           <div className="flex justify-end gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">

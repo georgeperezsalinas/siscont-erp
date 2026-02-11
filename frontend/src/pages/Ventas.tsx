@@ -648,7 +648,7 @@ export default function Ventas() {
       {/* Page Header */}
       <PageHeader
         title="Ventas"
-        subtitle="Gestiona tus ventas. ✅ Los asientos contables se generan automáticamente"
+        subtitle="✅ Los asientos contables se generan automáticamente"
         icon={TrendingUp}
         iconColor="primary"
         actions={
